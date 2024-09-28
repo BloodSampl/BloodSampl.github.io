@@ -1,0 +1,122 @@
+/* Body background */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: url('images/background.png') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+}
+
+/* Header section */
+header {
+    padding: 50px 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-bottom: 5px solid #fff;
+}
+
+header h1 {
+    font-size: 48px;
+    margin: 0;
+}
+
+header p {
+    font-size: 18px;
+    margin-top: 10px;
+    line-height: 1.6;
+}
+
+/* Card styling */
+.card {
+    max-width: 50%;
+    margin: 50px auto;
+    border: 5px solid #fff;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+}
+
+/* Slideshow container */
+.slideshow-container {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Each slide */
+.slide {
+    display: none;
+    width: 100%;
+    position: relative;
+}
+
+/* Slide image */
+.slide-img {
+    max-width: 100%; /* Allow image to scale down */
+    max-height: 500px; /* Limit height to prevent overflowing */
+    height: auto; /* Maintain aspect ratio */
+    width: auto; /* Allow width to scale naturally */
+    display: block; /* Ensure no extra space below images */
+    margin: 0 auto; /* Center the image */
+}
+
+/* Caption for each slide */
+.caption {
+    color: #fff;
+    font-size: 18px;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 80%;
+    text-align: center;
+}
+
+/* Fading effect */
+.fade {
+    animation: fadeEffect 1.5s;
+}
+
+@keyframes fadeEffect {
+    from {opacity: 0.4}
+    to {opacity: 1}
+}
+
+/* Arrow buttons */
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+    cursor: pointer;
+    background-color: rgba(0,0,0,0.4);
+    transform: translateY(-50%);
+    border-radius: 50%;
+    user-select: none;
+}
+
+.prev { left: 0; }
+.next { right: 0; }
+
+/* Add hover effect for arrows */
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+/* Responsive for mobile */
+@media only screen and (max-width: 768px) {
+    .caption {
+        font-size: 16px;
+    }
+
+    header h1 {
+        font-size: 36px;
+    }
+
+    header p {
+        font-size: 16px;
+    }
+}

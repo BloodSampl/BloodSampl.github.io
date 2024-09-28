@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahmed's Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Header Section -->
+<header>
+    <h1>Ahmed's Portfolio</h1>
+    <p>Hi, I'm Ahmed! I'm passionate about game development, design, and programming. Welcome to my portfolio!</p>
+</header>
+
+<!-- Slideshow Card Section -->
+<div class="card">
+    <div class="slideshow-container">
+        <!-- Slide 1 -->
+        <div class="slide fade">
+            <img src="images/slide1.png" alt="Project 1" class="slide-img">
+            <div class="caption">Project 1 Description</div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="slide fade">
+            <img src="images/slide2.png" alt="Project 2" class="slide-img">
+            <div class="caption">Project 2 Description</div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="slide fade">
+            <img src="images/slide3.png" alt="Project 3" class="slide-img">
+            <div class="caption">Project 3 Description</div>
+        </div>
+
+        <!-- Arrows for next/previous -->
+        <a class="prev" onclick="moveSlide(-1)">&#10094;</a>
+        <a class="next" onclick="moveSlide(1)">&#10095;</a>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
