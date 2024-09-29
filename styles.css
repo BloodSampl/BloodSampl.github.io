@@ -2,7 +2,7 @@
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
-    background: url('images/background.png') no-repeat center center fixed;
+    background: url(background) no-repeat center center fixed; /* Add your custom background image */
     background-size: cover;
     color: #fff;
 }
@@ -27,18 +27,19 @@ header p {
 
 /* Card styling */
 .card {
-    max-width: 50%;
+    max-width: 60%;
     margin: 50px auto;
     border: 5px solid #fff;
     border-radius: 10px;
-    background-color: rgba(0, 0, 0, 0.5);
+    background: url('card-background3.jpg') no-repeat center center; /* Add card background image */
+    background-size: cover;
     padding: 10px;
 }
-
 /* Slideshow container */
 .slideshow-container {
     position: relative;
     overflow: hidden;
+    width: 100%; /* Ensure the slideshow container is 100% width */
 }
 
 /* Each slide */
@@ -50,26 +51,40 @@ header p {
 
 /* Slide image */
 .slide-img {
-    max-width: 100%; /* Allow image to scale down */
-    max-height: 500px; /* Limit height to prevent overflowing */
-    height: auto; /* Maintain aspect ratio */
-    width: auto; /* Allow width to scale naturally */
-    display: block; /* Ensure no extra space below images */
+    width: 60%; /* Make the image fill the full width of the card */
+    max-height: 500px; /* Increase the max height to 600px */
+    object-fit: cover; /* Ensure the image covers the area without distortion */
+    display: block; /* Block-level element for full control */
+    margin: 0 auto; /* Center the image */
+}
+/* GIF Slide Image */
+.slide-gif {
+    width: 100%; /* Fill the full width of the card */
+    max-height: 600px; /* Ensure it has a consistent size */
+    object-fit: cover; /* Maintain aspect ratio */
+    display: block; /* Block-level element */
     margin: 0 auto; /* Center the image */
 }
 
-/* Caption for each slide */
-.caption {
+/* Project description styling */
+.project-description {
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-top: 2px solid #fff;
+    text-align: left;
+}
+
+.project-description h3 {
+    margin: 0;
+    font-size: 24px;
     color: #fff;
-    font-size: 18px;
-    padding: 8px 12px;
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: rgba(0, 0, 0, 0.6);
-    width: 80%;
-    text-align: center;
+}
+
+.project-description p {
+    margin-top: 10px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #ddd;
 }
 
 /* Fading effect */
