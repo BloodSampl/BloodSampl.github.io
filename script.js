@@ -14,29 +14,45 @@ function showSlides(index) {
         currentSlideIndex = slides.length - 1;
     }
 
-    // Hide all slides and reset images and GIFs visibility
+    // Hide all slides and reset images, GIFs, and video visibility
     slides.forEach(slide => {
-        slide.querySelector(".slide-img").style.display = "none";  // Hide all original images
-        slide.querySelector(".slide-gif").style.display = "none";  // Hide all GIFs
+        let img = slide.querySelector(".slide-img");
+        let gif = slide.querySelector(".slide-gif");
+        let videoContainer = slide.querySelector(".video-container");
+
+        if (img) img.style.display = "none";  // Hide all images
+        if (gif) gif.style.display = "none";  // Hide all GIFs
+        if (videoContainer) videoContainer.style.display = "none";  // Hide all video containers
         slide.style.display = "none";  // Hide all slides
     });
 
     // Show the current slide
     let currentSlide = slides[currentSlideIndex];
     currentSlide.style.display = "block";  // Show the current slide
-    currentSlide.querySelector(".slide-img").style.display = "block";  // Show the original image
 
-    // After 5 seconds, switch to GIF
-    clearTimeout(switchToGifTimeout);  // Clear any existing timeout to prevent overlap
-    switchToGifTimeout = setTimeout(() => {
-        // Hide original image and show GIF
-        currentSlide.querySelector(".slide-img").style.display = "none";  // Hide original image
-
-        // Reset GIF to start from the beginning
+    // Special handling for Slide 2 (YouTube video instead of GIF)
+    if (currentSlideIndex === 1) {
+        let videoContainer = currentSlide.querySelector(".video-container");
+        if (videoContainer) {
+            videoContainer.style.display = "block";  // Show the video container for Slide 2
+        }
+    } else {
+        let img = currentSlide.querySelector(".slide-img");
         let gif = currentSlide.querySelector(".slide-gif");
-        gif.src = gif.src; // Reset the GIF to restart it
-        gif.style.display = "block";  // Show GIF
-    }, 5000);  // Switch after 5 seconds
+
+        if (img) img.style.display = "block";  // Show the image for other slides
+
+        // After 5 seconds, switch to GIF (only for slides with GIFs)
+        if (gif) {
+            clearTimeout(switchToGifTimeout);  // Clear any existing timeout
+            switchToGifTimeout = setTimeout(() => {
+                // Hide original image and show GIF
+                if (img) img.style.display = "none";  // Hide the original image
+                gif.src = gif.src;  // Reset the GIF to restart it
+                gif.style.display = "block";  // Show the GIF
+            }, 5000);  // Switch after 5 seconds
+        }
+    }
 }
 
 // Next/previous control for slide navigation
