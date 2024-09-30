@@ -31,7 +31,7 @@ header p {
     margin: 50px auto;
     border: 5px solid #fff;
     border-radius: 10px;
-    background: url('card-background3.jpg') no-repeat center center; /* Add card background image */
+    background: url('selfBackground.jpg') no-repeat center center; /* Add card background image */
     background-size: cover;
     padding: 10px;
 }
