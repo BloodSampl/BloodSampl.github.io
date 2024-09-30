@@ -2,7 +2,7 @@
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
-    background: url('gif-background1.gif') no-repeat center center fixed; /* Add your custom background image */
+    background: url('background3.jpg') no-repeat center center fixed; /* Add your custom background image */
     background-size: cover;
     color: #fff;
 }
