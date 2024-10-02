@@ -61,7 +61,7 @@ header p {
 
 /* Button PNGs */
 .about-btn {
-    width: 100px;
+    width: 40px;
     height: auto;
     transition: transform 0.3s;
 }
