@@ -24,6 +24,7 @@ header p {
     margin-top: 10px;
     line-height: 1.6;
 }
+
 /* About Me Section Styling */
 #about-me {
     text-align: center;
@@ -68,30 +69,29 @@ header p {
 .about-btn:hover {
     transform: scale(1.1); /* Slight zoom on hover */
 }
+
 /* Header Card Styling */
 .header-card {
-    max-width: 30%; /* Set width of the card, adjust as needed */
-    margin: 0 auto; /* Center the card */
-    padding: 20px; /* Padding inside the card */
-    background-color: rgba(0, 0, 0, 0.7); /* Background color for the card */
-    border-radius: 10px; /* Rounded corners */
-    border: 2px solid #fff; /* Optional: white border around the card */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add some shadow for depth */
-    text-align: center; /* Center the header text inside the card */
+    max-width: 30%; /* Set width of the card */
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    border: 2px solid #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    text-align: center;
     margin-top: 50px; /* Space from the top of the page */
 }
 
 /* Projects Section Header Styling */
 .section-header {
-    font-size: 36px; /* Adjust size as needed */
+    font-size: 36px;
     font-weight: bold;
     color: #fff;
-    text-transform: uppercase; /* Optional: makes the text uppercase */
-    letter-spacing: 2px; /* Adds some spacing between the letters */
-    margin: 0; /* Remove default margin */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0;
 }
-
-
 
 /* Card styling */
 .card {
@@ -103,11 +103,22 @@ header p {
     background-size: cover;
     padding: 10px;
 }
+
 /* Slideshow container */
 .slideshow-container {
     position: relative;
     overflow: hidden;
     width: 100%; /* Ensure the slideshow container is 100% width */
+}
+
+/* Slide image, GIF, and additional image styling */
+.slide-img, .slide-gif, .slide-additional {
+    width: 100%;           /* Make the image fill the width of the container */
+    height: auto;          /* Maintain the aspect ratio */
+    max-height: 400px;     /* Set a maximum height to fit within the card */
+    object-fit: contain;   /* Preserve the aspect ratio, no cropping */
+    display: block;        /* Block-level element for full control */
+    margin: 0 auto;        /* Center the image horizontally */
 }
 
 /* Each slide */
@@ -116,24 +127,6 @@ header p {
     width: 100%;
     position: relative;
 }
-
-/* Slide image */
-.slide-img {
-    width: 60%; /* Make the image fill the full width of the card */
-    max-height: 500px; /* Increase the max height to 600px */
-    object-fit: cover; /* Ensure the image covers the area without distortion */
-    display: block; /* Block-level element for full control */
-    margin: 0 auto; /* Center the image */
-}
-/* GIF Slide Image */
-.slide-gif {
-    width: 100%; /* Fill the full width of the card */
-    max-height: 600px; /* Ensure it has a consistent size */
-    object-fit: cover; /* Maintain aspect ratio */
-    display: block; /* Block-level element */
-    margin: 0 auto; /* Center the image */
-}
-
 
 /* Project description styling */
 .project-description {
@@ -155,19 +148,19 @@ header p {
     line-height: 1.6;
     color: #ddd;
 }
+
 /* Game Link Styling */
 .game-link {
     font-size: 18px;
     font-weight: bold;
-    color: #00f; /* Change this color as per your design */
+    color: #00f;
     text-decoration: none;
 }
 
 .game-link:hover {
-    text-decoration: underline; /* Underline the link on hover */
-    color: #ff0; /* Optional: Change color on hover */
+    text-decoration: underline;
+    color: #ff0;
 }
-
 
 /* Fading effect */
 .fade {
@@ -175,8 +168,8 @@ header p {
 }
 
 @keyframes fadeEffect {
-    from {opacity: 0.4}
-    to {opacity: 1}
+    from {opacity: 0.4;}
+    to {opacity: 1;}
 }
 
 /* Arrow buttons */
@@ -198,22 +191,17 @@ header p {
 .prev { left: 0; }
 .next { right: 0; }
 
-/* Add hover effect for arrows */
 .prev:hover, .next:hover {
     background-color: rgba(0,0,0,0.8);
 }
 
-/* Responsive for mobile */
-@media only screen and (max-width: 768px) {
-    .caption {
-        font-size: 16px;
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .header-card, .card {
+        max-width: 90%;     /* Adjust the card size for smaller screens */
     }
 
-    header h1 {
-        font-size: 36px;
-    }
-
-    header p {
-        font-size: 16px;
+    .slide-img, .slide-gif, .slide-additional {
+        max-height: 300px;  /* Reduce max height for smaller screens */
     }
 }

@@ -1,9 +1,12 @@
-// Track the current slide
+// Track the current slide and image index
 let currentSlideIndex = 0;
-let switchToGifTimeout;  // Timeout to handle switching from image to GIF after 5 seconds
+let currentImageIndex = 0;
+let switchToNextImageTimeout;  // Timeout to handle automatic image switching
 
+// Initialize the slides
 showSlides(currentSlideIndex);
 
+// Function to display the slide and cycle through images within a slide
 function showSlides(index) {
     let slides = document.querySelectorAll(".slide");
 
@@ -14,63 +17,59 @@ function showSlides(index) {
         currentSlideIndex = slides.length - 1;
     }
 
-    // Hide all slides and reset images, GIFs, and video visibility
+    // Hide all slides and reset images
     slides.forEach(slide => {
-        let img = slide.querySelector(".slide-img");
-        let gif = slide.querySelector(".slide-gif");
-        let videoContainer = slide.querySelector(".video-container");
-
-        if (img) img.style.display = "none";  // Hide all images
-        if (gif) gif.style.display = "none";  // Hide all GIFs
-        if (videoContainer) videoContainer.style.display = "none";  // Hide all video containers
-        slide.style.display = "none";  // Hide all slides
+        slide.style.display = "none";
+        let images = slide.querySelectorAll("img");
+        images.forEach(image => image.style.display = "none");  // Hide all images in the slide
     });
 
     // Show the current slide
     let currentSlide = slides[currentSlideIndex];
     currentSlide.style.display = "block";  // Show the current slide
 
-    // Special handling for Slide 2 (YouTube video instead of GIF)
-    if (currentSlideIndex === 1) {
-        let videoContainer = currentSlide.querySelector(".video-container");
-        if (videoContainer) {
-            videoContainer.style.display = "block";  // Show the video container for Slide 2
-        }
-    } else {
-        let img = currentSlide.querySelector(".slide-img");
-        let gif = currentSlide.querySelector(".slide-gif");
+    // Get all images in the current slide
+    let images = currentSlide.querySelectorAll("img");
+    if (images.length > 0) {
+        // Show the first image or continue cycling through images
+        currentImageIndex = 0;  // Start with the first image
+        images[currentImageIndex].style.display = "block";  // Show the first image
 
-        if (img) img.style.display = "block";  // Show the image for other slides
-
-        // After 5 seconds, switch to GIF (only for slides with GIFs)
-        if (gif) {
-            clearTimeout(switchToGifTimeout);  // Clear any existing timeout
-            switchToGifTimeout = setTimeout(() => {
-                // Hide original image and show GIF
-                if (img) img.style.display = "none";  // Hide the original image
-                gif.src = gif.src;  // Reset the GIF to restart it
-                gif.style.display = "block";  // Show the GIF
-            }, 5000);  // Switch after 5 seconds
-        }
+        // Automatically switch to the next image
+        switchImages(images);
     }
+}
+
+// Function to automatically switch images in the current slide
+function switchImages(images) {
+    clearTimeout(switchToNextImageTimeout);  // Clear previous timeout
+
+    switchToNextImageTimeout = setTimeout(function () {
+        images[currentImageIndex].style.display = "none";  // Hide the current image
+        currentImageIndex = (currentImageIndex + 1) % images.length;  // Move to the next image, loop back to the first
+        images[currentImageIndex].style.display = "block";  // Show the next image
+
+        // Repeat the process
+        switchImages(images);
+    }, 5000);  // Switch images every 5 seconds
 }
 
 // Next/previous control for slide navigation
 function moveSlide(n) {
-    clearTimeout(switchToGifTimeout);  // Clear the GIF switch timeout when manually navigating
+    clearTimeout(switchToNextImageTimeout);  // Clear the image switch timeout when manually navigating
     showSlides(currentSlideIndex += n);  // Show the next or previous slide
 }
 
 // Arrow key control
 document.addEventListener('keydown', function(event) {
     if (event.key === 'ArrowRight') {
-        moveSlide(1);  // Move to next slide with right arrow
+        moveSlide(1);  // Move to the next slide with the right arrow key
     } else if (event.key === 'ArrowLeft') {
-        moveSlide(-1);  // Move to previous slide with left arrow
+        moveSlide(-1);  // Move to the previous slide with the left arrow key
     }
 });
 
-// Touch control for mobile
+// Touch control for mobile (Swipe)
 let startX = 0;
 document.querySelector('.slideshow-container').addEventListener('touchstart', function(event) {
     startX = event.touches[0].clientX;
